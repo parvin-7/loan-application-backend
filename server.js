@@ -9,8 +9,6 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 // Middlewares
-const cors = require('cors');
-
 app.use(cors({
   origin: 'https://your-netlify-site.netlify.app', // replace this later after frontend deploy
   credentials: true
