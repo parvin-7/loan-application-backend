@@ -9,7 +9,9 @@ const authRoutes = require('./routes/auth');
 const app = express();
 
 // Middlewares
-app.use(cors());
+const cors = require('cors');
+app.use(cors({ origin: 'https://your-netlify-app.netlify.app' }));
+
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI)
