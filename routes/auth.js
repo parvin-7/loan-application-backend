@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 
-// Sign-up
 router.post("/signup", async (req, res) => {
     console.log("Signup request body:", req.body);
     const { 
@@ -23,7 +22,7 @@ router.post("/signup", async (req, res) => {
     } = req.body;
 
     try {
-        // Validate required fields
+      
         if (!email || !password) {
             console.log("Validation failed: Email or password missing");
             return res.status(400).json({ success: false, message: "Email and password are required" });
@@ -89,7 +88,7 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-// Login
+
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {

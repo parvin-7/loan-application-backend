@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Application = require('../models/Application');
-const User = require('../models/UserLogin'); // Import User model
+const User = require('../models/UserLogin'); 
 const auth = require('../middleware/auth');
 
 router.get("/application/:userId", auth, async (req, res) => {
@@ -11,13 +11,12 @@ router.get("/application/:userId", auth, async (req, res) => {
             return res.status(404).json({ message: "Application not found" });
         }
 
-        // Fetch the user's email from the userlogins collection
+        
         const user = await User.findById(req.params.userId);
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
-        // Add email to the application data
         const applicationData = {
             ...application.toObject(),
             email: user.email,
@@ -30,7 +29,7 @@ router.get("/application/:userId", auth, async (req, res) => {
     }
 });
 
-// Other routes (e.g., /apply)
+
 router.post("/apply", auth, async (req, res) => {
     try {
         const existingApplication = await Application.findOne({ userId: req.user.id });
