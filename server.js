@@ -10,9 +10,10 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-  origin: 'https://your-netlify-site.netlify.app', // replace this later after frontend deploy
-  credentials: true
+  origin: 'https://secureloan.netlify.app',
+  credentials: true,
 }));
+
 
 app.use(express.json());
 
